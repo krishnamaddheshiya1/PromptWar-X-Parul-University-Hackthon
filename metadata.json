@@ -1,0 +1,6 @@
+{
+  "name": "Final-Year Project Idea Generator & Mentor",
+  "description": "AI-powered capstone project generator, architecture advisor, milestone tracker, and integrated version control companion for final-year students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

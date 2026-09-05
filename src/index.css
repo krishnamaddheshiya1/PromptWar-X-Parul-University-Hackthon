@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------------------------------------------------
+ * Printer-Friendly Academic Layout & University Submission Styles
+ * ------------------------------------------------------------- */
+@media print {
+  /* Hide non-printable screen UI components */
+  .no-print,
+  header,
+  nav,
+  footer,
+  aside,
+  button:not(.print-include),
+  .modal-backdrop,
+  [data-no-print="true"] {
+    display: none !important;
+  }
+
+  /* Force pure white background and crisp contrast for ink economy */
+  html,
+  html.dark,
+  body,
+  body.dark {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Unset dialog overlay & scrolling limitations during print */
+  div[role="dialog"] {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+
+  div[role="dialog"] > div {
+    position: static !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  div[role="dialog"] .overflow-y-auto {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+
+  /* Dark mode overrides for print: ensure paper ink economy and high contrast */
+  .dark,
+  .dark body,
+  .dark .printable-document {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .dark .printable-document * {
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+    text-shadow: none !important;
+  }
+
+  /* Preserve subtle background tints on badges and section headers */
+  .printable-document .bg-\[\#F8FAFC\] {
+    background-color: #f8fafc !important;
+  }
+  .printable-document .bg-\[\#EFF6FF\] {
+    background-color: #eff6ff !important;
+  }
+  .printable-document .bg-\[\#DCFCE7\] {
+    background-color: #dcfce7 !important;
+  }
+  .printable-document .bg-\[\#F0FDF4\] {
+    background-color: #f0fdf4 !important;
+  }
+
+  /* Force visibility for print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Printable Academic Document Container */
+  .printable-document {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  /* Clean table borders and headings */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6pt 8pt !important;
+  }
+
+  /* Page Break Control Utilities */
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .avoid-page-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Set standardized page dimensions */
+  @page {
+    size: A4 portrait;
+    margin: 14mm 15mm 16mm 15mm;
+  }
+}
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
